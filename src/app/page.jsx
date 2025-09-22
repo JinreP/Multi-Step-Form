@@ -19,30 +19,20 @@ export default function Home() {
   };
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
-      <div className="flex text-center flex-col gap-3 w-[500px] h-[500px] bg-white">
-        <img src="./logo.png" alt="test" className="w-[100px] h-[100px]" />
-        <h1 className="font-bold text-black text-3xl">Join Us! 😎</h1>
-        <p className="text-gray-400">
-          Please provide all current information accurately.
-        </p>
-        <div className="body">{currentPage()}</div>
-        <div className="flex gap-5">
-          {page > 0 && (
-            <button
-              onClick={() => setPage(page - 1)}
-              className="w-[100px] h-[50px] bg-red-500"
-            >
-              Prev
-            </button>
-          )}
-
-          <button
-            className="w-[100px] h-[50px] bg-red-500"
-            onClick={() => setPage(page + 1)}
-          >
-            {page === 2 ? "Submit" : "Continue "}
-          </button>
-        </div>
+      <div className="body">{currentPage()}</div>
+      <div className="flex gap-5">
+        <button
+          onClick={() => setPage(page - 1)}
+          className="w-[100px] h-[50px] bg-red-500"
+        >
+          Prev
+        </button>
+        <button
+          className="w-[100px] h-[50px] bg-red-500"
+          onClick={() => setPage(page + 1)}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
