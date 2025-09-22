@@ -7,6 +7,7 @@ import { Buttons } from "../components/Buttons";
 
 export default function Home() {
   const [page, setPage] = useState(0);
+
   const [data, setData] = useState({
     FirstName: "",
     LastName: "",
@@ -17,6 +18,7 @@ export default function Home() {
     confirmPass: "",
     date: "",
   });
+
   const currentPage = () => {
     if (page === 0) {
       return <Step1 data={data} setData={setData} />;
