@@ -19,20 +19,22 @@ export default function Home() {
   };
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
-      <div className="body">{currentPage()}</div>
-      <div className="flex gap-5">
-        <button
-          onClick={() => setPage(page - 1)}
-          className="w-[100px] h-[50px] bg-red-500"
-        >
-          Prev
-        </button>
-        <button
-          className="w-[100px] h-[50px] bg-red-500"
-          onClick={() => setPage(page + 1)}
-        >
-          Next
-        </button>
+      <div className="flex text-center flex-col gap-3 w-[500px] h-[500px] bg-gray-400">
+        <div className="body">{currentPage()}</div>
+        <div className="flex gap-5">
+          <button
+            onClick={() => setPage(page - 1)}
+            className="w-[100px] h-[50px] bg-red-500"
+          >
+            Prev
+          </button>
+          <button
+            className="w-[100px] h-[50px] bg-red-500"
+            onClick={() => setPage(page + 1)}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
