@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Step1 } from "../components/StepOne";
 import { Step2 } from "../components/StepTwo";
 import { Step3 } from "../components/StepThree";
+import { Buttons } from "../components/Buttons";
 
 export default function Home() {
   const [page, setPage] = useState(0);
@@ -37,28 +38,12 @@ export default function Home() {
         </p>
         <div className="body">{currentPage()}</div>
         <div className="flex gap-5">
-          {page > 0 && (
-            <button
-              onClick={() => setPage(page - 1)}
-              className="w-[100px] h-[50px] bg-red-500"
-            >
-              Prev
-            </button>
-          )}
-
-          <button
-            className="w-[100px] h-[50px] bg-red-500"
-            onClick={() => {
-              if (page === 2) {
-                alert("Done");
-                console.log(data);
-              } else {
-                setPage(page + 1);
-              }
-            }}
-          >
-            {page === 2 ? "Submit" : "Continue "}
-          </button>
+          <Buttons
+            page={page}
+            setPage={setPage}
+            data={data}
+            setData={setData}
+          />
         </div>
       </div>
     </div>
