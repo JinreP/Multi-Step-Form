@@ -15,11 +15,8 @@ export function Step2(props) {
         value={data.email}
         onChange={(e) => setData({ ...data, email: e.target.value })}
       />
-      {error && <span className="text-red-500 text-sm mt-2">{error}</span>}
-
-      {error && <span className="text-red-500 text-sm mt-2">{error}</span>}
-
       <label htmlFor="">Phone number *</label>
+
       <input
         type="number"
         className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
@@ -27,8 +24,8 @@ export function Step2(props) {
         value={data.number}
         onChange={(e) => setData({ ...data, number: e.target.value })}
       />
-
       <label htmlFor="">Password *</label>
+
       <input
         type="password"
         className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
