@@ -6,15 +6,25 @@ import { Step3 } from "../components/StepThree";
 
 export default function Home() {
   const [page, setPage] = useState(0);
+  const [data, setDate] = useState({
+    FirstName: "",
+    LastName: "",
+    Username: "",
+    email: "",
+    number: "",
+    password: "",
+    confirmPass: "",
+    date: "",
+  });
   const currentPage = () => {
     if (page === 0) {
-      return <Step1 />;
+      return <Step1 data={data} setDate={setDate} />;
     }
     if (page === 1) {
-      return <Step2 />;
+      return <Step2 data={data} setDate={setDate} />;
     }
     if (page === 2) {
-      return <Step3 />;
+      return <Step3 data={data} setDate={setDate} />;
     }
   };
   return (
@@ -38,7 +48,13 @@ export default function Home() {
 
           <button
             className="w-[100px] h-[50px] bg-red-500"
-            onClick={() => setPage(page + 1)}
+            onClick={() => {
+              if (page === 2) {
+                alert("Done");
+              } else {
+                setPage(page + 1);
+              }
+            }}
           >
             {page === 2 ? "Submit" : "Continue "}
           </button>
