@@ -1,4 +1,5 @@
-export function Step3() {
+export function Step3(props) {
+  const { data, setData } = props;
   return (
     <div className="flex flex-col gap-5">
       <label htmlFor="" className="text-black">
@@ -8,6 +9,8 @@ export function Step3() {
         type="date"
         className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
         placeholder="Date of birth"
+        value={data.date}
+        onChange={(e) => setData({ ...data, date: e.target.value })}
       />
     </div>
   );
