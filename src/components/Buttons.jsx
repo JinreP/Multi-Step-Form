@@ -8,7 +8,7 @@ export function Buttons(props) {
           onClick={() => setPage(page - 1)}
           className="w-[100px] h-[50px] bg-red-500"
         >
-          Prev
+          Prev{" "}
         </button>
       )}
       {page === 0 && (
@@ -16,7 +16,7 @@ export function Buttons(props) {
           onClick={() => setPage(page + 1)}
           className="w-[100px] h-[50px] bg-red-500"
         >
-          Continue 1/3
+          Continue 1/3{" "}
         </button>
       )}
       {page === 1 && (
@@ -24,7 +24,7 @@ export function Buttons(props) {
           onClick={() => setPage(page + 1)}
           className="w-[100px] h-[50px] bg-red-500"
         >
-          Continue 2/3
+          Continue 2/3{" "}
         </button>
       )}
       {page === 2 && (
@@ -39,7 +39,7 @@ export function Buttons(props) {
             }
           }}
         >
-          Submit
+          Submit{" "}
         </button>
       )}
     </div>
