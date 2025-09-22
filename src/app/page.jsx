@@ -6,7 +6,7 @@ import { Step3 } from "../components/StepThree";
 
 export default function Home() {
   const [page, setPage] = useState(0);
-  const [data, setDate] = useState({
+  const [data, setData] = useState({
     FirstName: "",
     LastName: "",
     Username: "",
@@ -18,13 +18,13 @@ export default function Home() {
   });
   const currentPage = () => {
     if (page === 0) {
-      return <Step1 data={data} setDate={setDate} />;
+      return <Step1 data={data} setData={setData} />;
     }
     if (page === 1) {
-      return <Step2 data={data} setDate={setDate} />;
+      return <Step2 data={data} setData={setData} />;
     }
     if (page === 2) {
-      return <Step3 data={data} setDate={setDate} />;
+      return <Step3 data={data} setData={setData} />;
     }
   };
   return (
@@ -51,6 +51,7 @@ export default function Home() {
             onClick={() => {
               if (page === 2) {
                 alert("Done");
+                console.log(data);
               } else {
                 setPage(page + 1);
               }
