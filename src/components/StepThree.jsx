@@ -1,7 +1,7 @@
 export function Step3(props) {
   const { data, setData } = props;
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 items-start justify-start">
       <label htmlFor="" className="text-black">
         Date of birth *
       </label>
