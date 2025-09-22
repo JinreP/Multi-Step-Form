@@ -7,7 +7,6 @@ import { Buttons } from "../components/Buttons";
 
 export default function Home() {
   const [page, setPage] = useState(0);
-
   const [data, setData] = useState({
     FirstName: "",
     LastName: "",
