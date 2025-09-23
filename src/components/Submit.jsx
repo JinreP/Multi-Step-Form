@@ -1,6 +1,5 @@
 export function Submitted() {
   return (
-    <div className="flex flex-col justify-center items-center ">
       <div className="w-[480px] h-[193px] border-2 bg-white rounded-2xl">
         <img
           src="./logo.png"
@@ -14,6 +13,5 @@ export function Submitted() {
           </p>
         </div>
       </div>
-    </div>
   );
 }

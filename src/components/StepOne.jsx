@@ -20,7 +20,7 @@ export function Step1(props) {
   // }
 
   return (
-    <div className="flex flex-col gap-5 items-start justify-start">
+    <div className="">
       <form
         onSubmit={submit}
         className="flex flex-col justify-start items-start"
@@ -68,7 +68,7 @@ export function Step1(props) {
           <button
             type="submit"
             onClick={() => setPage(page + 1)}
-            className="w-[200px] rounded-[10px] h-[50px] bg-black text-white font-bold"
+            className="w- rounded-[10px] h-[50px] bg-black text-white font-bold"
           >
             Continue 1/3
           </button>

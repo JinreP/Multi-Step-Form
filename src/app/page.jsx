@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { use, useState } from "react";
 import { Step1 } from "../components/StepOne";
 import { Step2 } from "../components/StepTwo";
 import { Step3 } from "../components/StepThree";
@@ -8,6 +8,7 @@ import { Buttons } from "../components/Buttons";
 
 export default function Home() {
   const [page, setPage] = useState(0);
+  const [index, setIndex] = useState(1);
   const [errors, setErrors] = useState({
     FirstName: null,
     LastName: null,
@@ -91,16 +92,49 @@ export default function Home() {
           </div>
         )}
         <div className="body">{currentPage()}</div>
+
         <div className="flex gap-5">
-          <Buttons
-            page={page}
-            submit={submit}
-            setPage={setPage}
-            data={data}
-            setData={setData}
-            errors={errors}
-            setErrors={setErrors}
-          />
+          {page > 0 && page !== page.length - 1 ? (
+            <Buttons
+              page={page}
+              submit={submit}
+              setPage={setPage}
+              data={data}
+              setData={setData}
+              errors={errors}
+              setErrors={setErrors}
+              isContinue={true}
+              text={"Prev"}
+              prevBtn={() => {
+                setPage(page - 1);
+                setIndex((prev) => prev - 1);
+              }}
+            />
+          ) : (
+            ""
+          )}
+
+          {page < page.length - 1 ? (
+            <Buttons
+              page={page}
+              submit={submit}
+              setPage={setPage}
+              data={data}
+              setData={setData}
+              errors={errors}
+              setErrors={setErrors}
+              isContinue={false}
+              setIndex={setIndex}
+              text={"Continue"}
+              index={index}
+              continueBtn={() => {
+                setPage(page + 1);
+                setIndex((prev) => prev + 1);
+              }}
+            />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

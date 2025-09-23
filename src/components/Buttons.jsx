@@ -1,10 +1,44 @@
 import { Submitted } from "./Submit";
 import Link from "next/link";
 export function Buttons(props) {
-  const { page, setPage, data, setData, errors, setErrors } = props;
+  const {
+    page,
+    setPage,
+    data,
+    setData,
+    errors,
+    setErrors,
+    prevBtn,
+    continueBtn,
+    setIndex,
+    index,
+    text,
+    isContinue,
+  } = props;
+
+  if (isContinue) {
+    return (
+      <button
+        className="w-[120px] rounded-[10px] h-[50px] bg-gray-300 text-black font-bold"
+        onClick={continueBtn}
+      >
+        <div className="flex gap-2">
+          <p>{text}</p>
+          <p>{index}</p>
+        </div>
+      </button>
+    );
+  }
+
   return (
     <div className="flex gap-10 justify-center items-center">
-      {" "}
+      <button
+        className="w-[120px] rounded-[10px] h-[50px] bg-gray-300 text-black font-bold"
+        onClick={prevBtn}
+      >
+        {text}
+      </button>
+      {/* {" "}
       {page === 0 && (
         <button className="w-[120px] rounded-[10px] h-[50px] bg-gray-100 text-black font-bold">
           Prev{" "}
@@ -34,7 +68,7 @@ export function Buttons(props) {
           Submit 3/3
         </button>
       )}
-      {page === 3 && <Submitted />}
+      {page === 3 && <Submitted />} */}
     </div>
   );
 }
