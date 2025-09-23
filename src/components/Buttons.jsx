@@ -1,3 +1,5 @@
+import { Submitted } from "./Submit";
+import Link from "next/link";
 export function Buttons(props) {
   const { page, setPage, data, setData } = props;
   return (

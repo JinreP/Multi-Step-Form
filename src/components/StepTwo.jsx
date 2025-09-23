@@ -2,8 +2,23 @@ export function Step2(props) {
   const { data, setData } = props;
 
   let error = "";
-  if (!data.email) {
+  let numberError = "";
+  let passError = "";
+  let passError2 = "";
+  if (data.email === "") {
     error = "Email is required";
+  }
+  if (data.number === "") {
+    numberError = "Phone number is required";
+  }
+  if (data.password === "") {
+    passError = "Password is required";
+  }
+
+  if (data.password === data.confirmPass) {
+    passError2 = "Password matches";
+  } else {
+    passError2 = "Password is not matching !!";
   }
 
   return (
@@ -26,7 +41,10 @@ export function Step2(props) {
         value={data.number}
         onChange={(e) => setData({ ...data, number: e.target.value })}
       />
-    
+      {numberError && (
+        <span className="text-red-500 text-sm mt-2">{numberError}</span>
+      )}
+
       <label htmlFor="">Password *</label>
       <input
         type="password"
@@ -35,6 +53,9 @@ export function Step2(props) {
         value={data.password}
         onChange={(e) => setData({ ...data, password: e.target.value })}
       />
+      {passError && (
+        <span className="text-red-500 text-sm mt-2">{passError}</span>
+      )}
       <label htmlFor="">Password confirm *</label>
       <input
         type="password"
@@ -43,6 +64,15 @@ export function Step2(props) {
         value={data.confirmPass}
         onChange={(e) => setData({ ...data, confirmPass: e.target.value })}
       />
+      {passError2 && (
+        <span className="text-red-500 text-sm mt-2">{passError2}</span>
+      )}
     </div>
   );
 }
+
+// data.password !== data.confirmPass
+//         ? (passError2 = "Password is not matching!!")
+//         : "" || data.confirmPass === ""
+//         ? (passError2 = "Confirm you're password")
+//         : "Make" &&
