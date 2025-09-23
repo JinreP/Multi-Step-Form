@@ -32,7 +32,7 @@ export function Buttons(props) {
 
   return (
     <div className="flex gap-10 justify-center items-center">
-      <button
+      <button s
         className="w-[120px] rounded-[10px] h-[50px] bg-gray-300 text-black font-bold"
         onClick={prevBtn}
       >
