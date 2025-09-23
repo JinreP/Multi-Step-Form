@@ -2,7 +2,7 @@ export function Step2(props) {
   const { data, setData } = props;
 
   let error = "";
-  if (!data.email){
+  if (!data.email) {
     error = "Email is required";
   }
 
@@ -16,6 +16,7 @@ export function Step2(props) {
         value={data.email}
         onChange={(e) => setData({ ...data, email: e.target.value })}
       />
+      {error && <span className="text-red-500 text-sm mt-2">{error}</span>}
 
       <label htmlFor="">Phone number *</label>
       <input
@@ -25,6 +26,7 @@ export function Step2(props) {
         value={data.number}
         onChange={(e) => setData({ ...data, number: e.target.value })}
       />
+    
       <label htmlFor="">Password *</label>
       <input
         type="password"
@@ -41,9 +43,6 @@ export function Step2(props) {
         value={data.confirmPass}
         onChange={(e) => setData({ ...data, confirmPass: e.target.value })}
       />
-      {error && (
-        <span className="text-red-500 text-sm mt-2">{error}</span>
-      )}
     </div>
   );
 }
