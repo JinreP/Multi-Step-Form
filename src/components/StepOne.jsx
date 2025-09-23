@@ -1,33 +1,79 @@
 export function Step1(props) {
-  const { data, setData } = props;
+  const { data, setData, page, setPage, errors, setErrors, submit } = props;
+  // let firstNameError = "";
+  // let lastNameError = "";
+  // let usernameError = "";
+  // if (data.FirstName === "") {
+  //   firstNameError = "First name is required";
+  // } else if (data.FirstName.length > 10) {
+  //   firstNameError = "type you're real name amigo!!";
+  // }
+
+  // if (data.LastName === "") {
+  //   lastNameError = "Last name is required";
+  // } else if (data.LastName.length > 12) {
+  //   lastNameError = "type you're real name amigo!!";
+  // }
+
+  // if (data.Username === "") {
+  //   usernameError = "Username is required";
+  // }
+
   return (
     <div className="flex flex-col gap-5 items-start justify-start">
-      <label htmlFor="">First name *</label>
-      <input
-        type="text"
-        className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
-        value={data.FirstName}
-        onChange={(event) =>
-          setData({ ...data, FirstName: event.target.value })
-        }
-        placeholder="Enter Your First Name"
-      />{" "}
-      <label htmlFor="">Last name *</label>
-      <input
-        type="text"
-        className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
-        value={data.LastName}
-        onChange={(event) => setData({ ...data, LastName: event.target.value })}
-        placeholder="Enter Your Last Name"
-      />{" "}
-      <label htmlFor="">Username *</label>
-      <input
-        type="text"
-        className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
-        value={data.Username}
-        onChange={(event) => setData({ ...data, Username: event.target.value })}
-        placeholder="Enter Your Username"
-      />
+      <form
+        onSubmit={submit}
+        className="flex flex-col justify-start items-start"
+      >
+        <label htmlFor="FirstName">First name *</label>
+        <input
+          type="text"
+          id="FirstName"
+          name="FirstName"
+          className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
+          value={data.FirstName}
+          onChange={(event) =>
+            setData({ ...data, FirstName: event.target.value })
+          }
+          placeholder="Enter Your First Name"
+        />{" "}
+        {errors.FirstName && <p className="text-red-600">{errors.FirstName}</p>}
+        <label htmlFor="LastName">Last name *</label>
+        <input
+          type="text"
+          id="LastName"
+          name="LastName"
+          className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
+          value={data.LastName}
+          onChange={(event) =>
+            setData({ ...data, LastName: event.target.value })
+          }
+          placeholder="Enter Your Last Name"
+        />{" "}
+        {errors.LastName && <p className="text-red-600">{errors.LastName}</p>}
+        <label htmlFor="Username">Username *</label>
+        <input
+          type="text"
+          id="Username"
+          name="Username"
+          className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
+          value={data.Username}
+          onChange={(event) =>
+            setData({ ...data, Username: event.target.value })
+          }
+          placeholder="Enter Your Username"
+        />
+        {errors.Username && <p className="text-red-600">{errors.Username}</p>}
+        {page === 0 && (
+          <button
+            type="submit"
+            onClick={() => setPage(page + 1)}
+            className="w-[200px] rounded-[10px] h-[50px] bg-black text-white font-bold"
+          >
+            Continue 1/3
+          </button>
+        )}
+      </form>
     </div>
   );
 }

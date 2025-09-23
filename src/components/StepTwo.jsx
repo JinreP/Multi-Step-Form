@@ -7,15 +7,20 @@ export function Step2(props) {
   let passError2 = "";
   if (data.email === "") {
     error = "Email is required";
+  } else if (!data.email.includes("@gmail.com")) {
+    error = "Type you're real email!!";
   }
   if (data.number === "") {
     numberError = "Phone number is required";
+  } else if (data.number.length > 8) {
+    numberError = "type you're real phone number";
   }
   if (data.password === "") {
     passError = "Password is required";
   }
-
-  if (data.password === data.confirmPass) {
+  if (data.confirmPass === "") {
+    passError2 = "Confirm you're password";
+  } else if (data.password !== "" && data.password === data.confirmPass) {
     passError2 = "Password matches";
   } else {
     passError2 = "Password is not matching !!";
