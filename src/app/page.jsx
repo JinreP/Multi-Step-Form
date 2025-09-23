@@ -33,7 +33,7 @@ export default function Home() {
     <div className="w-full h-screen flex flex-col justify-center items-center">
       <div className="flex text-center flex-col gap-3 w-[400px] h-[600px] bg-white">
         <img src="./logo.png" alt="test" className="w-[100px] h-[100px]" />
-        <div className="flex flex-col justify-start items-start">
+        <div className="flex flex-col items-start justify-start">
           <h1 className="font-bold text-black text-3xl">Join Us! 😎</h1>
           <p className="text-gray-400">
             Please provide all current information accurately.
