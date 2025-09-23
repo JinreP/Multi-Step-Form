@@ -3,8 +3,6 @@ import { userAgent } from "next/server";
 export function Step2(props) {
   const { data, setData } = props;
 
-  const shortUsername = Username.length > 0 && Username.length < 3;
-
   return (
     <div className="flex flex-col gap-5 items-start justify-start">
       <label htmlFor="">Email *</label>

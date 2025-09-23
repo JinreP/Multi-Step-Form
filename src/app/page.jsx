@@ -30,18 +30,13 @@ export default function Home() {
     date: "",
   });
   const submit = (e) => {
-    e.preventDefault();
-    if (e.target.FirstName.value.length === 0) {
-      setErrors({ ...errors, FirstName: "First name is required" });
+    if (e && e.preventDefault) {
+      e.preventDefault();
     }
-    if (e.target.LastName.value.length === 0) {
-      setErrors({ ...errors, LastName: "Last name is required" });
-    }
-    if (e.target.Username.value.length === 0) {
-      setErrors({ ...errors, Username: "Username is required" });
-    }
-    console.log(e.target.FirstName.value);
   };
+
+  const totalPages = 4;
+
   const currentPage = () => {
     if (page === 0) {
       return (
@@ -76,13 +71,14 @@ export default function Home() {
         />
       );
     }
+    if (page === 3) return <Submitted />;
   };
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center ">
       <div className="flex text-center flex-col gap-3 w-[400px] h-[600px] bg-white">
         {page < 3 && (
           <div>
-            <img src="./logo.png" alt="test" className="w-[100px] h-[100px]" />
+            <img src="/logo.png" alt="test" className="w-[100px] h-[100px]" />
             <div className="flex flex-col items-start justify-start">
               <h1 className="font-bold text-black text-3xl">Join us! 😎</h1>
               <p className="text-gray-400">
@@ -94,7 +90,7 @@ export default function Home() {
         <div className="body">{currentPage()}</div>
 
         <div className="flex gap-5">
-          {page > 0 && page !== page.length - 1 ? (
+          {page > 0 && page !== totalPages - 1 ? (
             <Buttons
               page={page}
               submit={submit}
@@ -103,7 +99,7 @@ export default function Home() {
               setData={setData}
               errors={errors}
               setErrors={setErrors}
-              isContinue={true}
+              isContinue={false}
               text={"Prev"}
               prevBtn={() => {
                 setPage(page - 1);
@@ -114,7 +110,7 @@ export default function Home() {
             ""
           )}
 
-          {page < page.length - 1 ? (
+          {page < totalPages - 1 ? (
             <Buttons
               page={page}
               submit={submit}
@@ -123,7 +119,7 @@ export default function Home() {
               setData={setData}
               errors={errors}
               setErrors={setErrors}
-              isContinue={false}
+              isContinue={true}
               setIndex={setIndex}
               text={"Continue"}
               index={index}

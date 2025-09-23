@@ -64,15 +64,6 @@ export function Step1(props) {
           placeholder="Enter Your Username"
         />
         {errors.Username && <p className="text-red-600">{errors.Username}</p>}
-        {page === 0 && (
-          <button
-            type="submit"
-            onClick={() => setPage(page + 1)}
-            className="w- rounded-[10px] h-[50px] bg-black text-white font-bold"
-          >
-            Continue 1/3
-          </button>
-        )}
       </form>
     </div>
   );

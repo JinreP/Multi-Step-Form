@@ -14,17 +14,24 @@ export function Buttons(props) {
     index,
     text,
     isContinue,
+    submit,
   } = props;
-
   if (isContinue) {
     return (
       <button
-        className="w-[120px] rounded-[10px] h-[50px] bg-gray-300 text-black font-bold"
-        onClick={continueBtn}
+        type="button"
+        className="w-[150px] rounded-[10px] h-[50px] bg-black text-white font-bold"
+        onClick={(e) => {
+          if (submit) {
+            submit();
+          } else {
+            continueBtn();
+          }
+        }}
       >
-        <div className="flex gap-2">
+        <div className="flex  gap-1 pl-6 text-center">
           <p>{text}</p>
-          <p>{index}</p>
+          <p>{index}/3</p>
         </div>
       </button>
     );
@@ -32,8 +39,8 @@ export function Buttons(props) {
 
   return (
     <div className="flex gap-10 justify-center items-center">
-      <button s
-        className="w-[120px] rounded-[10px] h-[50px] bg-gray-300 text-black font-bold"
+      <button
+        className="w-[120px] rounded-[10px] h-[50px] bg-gray-300  text-black font-bold"
         onClick={prevBtn}
       >
         {text}
