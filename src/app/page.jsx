@@ -30,11 +30,65 @@ export default function Home() {
     date: "",
   });
   const submit = (e) => {
-    if (e && e.preventDefault) {
-      e.preventDefault();
+    e.preventDefault();
+
+    let newErrors = {};
+
+    if (data.FirstName.trim().length === 0) {
+      newErrors.FirstName = "First name is required";
+    } else if (data.FirstName.trim().length < 3) {
+      newErrors.FirstName = "First name is too short";
+    }
+    if (data.LastName.trim().length === 0) {
+      newErrors.LastName = "Last name is required";
+    } else if (data.LastName.trim().length < 3) {
+      newErrors.LastName = "Last name is too short";
+    }
+
+    if (data.Username.trim().length === 0) {
+      newErrors.Username = "Username is required";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      setPage(page + 1);
+      setIndex(index + 1);
+    }
+  };
+  const validation = (e) => {
+    e.preventDefault();
+
+    let newErrors = {};
+
+    if (data.email.trim().length === 0) {
+      newErrors.email = "email is required";
+    }
+    if (data.number.trim().length === 0) {
+      newErrors.number = "Phone number is required";
+    } else if (data.number.length > 8) {
+      newErrors.number = "enter you're real number";
+    }
+    if (data.password.trim().length === 0) {
+      newErrors.password = "password is required";
+    } else if (data.password.length < 8) {
+      newErrors.password = "weak password";
+    }
+
+    if (!data.password === data.confirmPass) {
+      newErrors.confirmPass = "Pasword is not matching";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      setPage(page + 1);
+      setIndex(index + 1);
     }
   };
 
+  //   let newErrors = {};
+  // };
   const totalPages = 4;
 
   const currentPage = () => {
@@ -57,6 +111,7 @@ export default function Home() {
           data={data}
           setData={setData}
           errors={errors}
+          validation={validation}
           setErrors={setErrors}
         />
       );
@@ -65,6 +120,7 @@ export default function Home() {
       return (
         <Step3
           data={data}
+          submit={submit}
           setData={setData}
           errors={errors}
           setErrors={setErrors}
@@ -73,6 +129,20 @@ export default function Home() {
     }
     if (page === 3) return <Submitted />;
   };
+  function continueBtn() {
+    setPage(page + 1);
+    setIndex((prev) => prev + 1);
+  }
+  function prevBtn() {
+    setPage(page - 1);
+    setIndex((prev) => prev - 1);
+  }
+  const keyboard = (e) => {
+    if (e.key === "Enter") {
+      continueBtn();
+    }
+  };
+
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center ">
       <div className="flex text-center flex-col gap-3 w-[400px] h-[600px] bg-white">
@@ -80,14 +150,14 @@ export default function Home() {
           <div>
             <img src="/logo.png" alt="test" className="w-[100px] h-[100px]" />
             <div className="flex flex-col items-start justify-start">
-              <h1 className="font-bold text-black text-3xl">Join us! 😎</h1>
+              <h1 className="font-bold text-black text-3xl ">Join us! 😎</h1>
               <p className="text-gray-400">
                 Please provide all current information accurately.
               </p>
             </div>{" "}
           </div>
         )}
-        <div className="body">{currentPage()}</div>
+        <div className="body">{currentPage(page)}</div>
 
         <div className="flex gap-5">
           {page > 0 && page !== totalPages - 1 ? (
@@ -101,32 +171,28 @@ export default function Home() {
               setErrors={setErrors}
               isContinue={false}
               text={"Prev"}
-              prevBtn={() => {
-                setPage(page - 1);
-                setIndex((prev) => prev - 1);
-              }}
+              prevBtn={prevBtn}
             />
           ) : (
             ""
           )}
 
-          {page < totalPages - 1 ? (
+          {page < 2 - 1 ? (
             <Buttons
               page={page}
               submit={submit}
               setPage={setPage}
               data={data}
               setData={setData}
+              validation={validation}
               errors={errors}
               setErrors={setErrors}
               isContinue={true}
               setIndex={setIndex}
               text={"Continue"}
               index={index}
-              continueBtn={() => {
-                setPage(page + 1);
-                setIndex((prev) => prev + 1);
-              }}
+              keyboard={keyboard}
+              continueBtn={continueBtn}
             />
           ) : (
             ""

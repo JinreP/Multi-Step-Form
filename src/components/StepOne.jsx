@@ -1,3 +1,6 @@
+
+
+
 export function Step1(props) {
   const { data, setData, page, setPage, errors, setErrors, submit } = props;
   // let firstNameError = "";
@@ -68,3 +71,5 @@ export function Step1(props) {
     </div>
   );
 }
+
+// ()=>setErrors({...errors, FirstName: undefined})}
