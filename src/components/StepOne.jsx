@@ -1,26 +1,5 @@
-
-
-
 export function Step1(props) {
   const { data, setData, page, setPage, errors, setErrors, submit } = props;
-  // let firstNameError = "";
-  // let lastNameError = "";
-  // let usernameError = "";
-  // if (data.FirstName === "") {
-  //   firstNameError = "First name is required";
-  // } else if (data.FirstName.length > 10) {
-  //   firstNameError = "type you're real name amigo!!";
-  // }
-
-  // if (data.LastName === "") {
-  //   lastNameError = "Last name is required";
-  // } else if (data.LastName.length > 12) {
-  //   lastNameError = "type you're real name amigo!!";
-  // }
-
-  // if (data.Username === "") {
-  //   usernameError = "Username is required";
-  // }
 
   return (
     <div className="">
@@ -72,4 +51,3 @@ export function Step1(props) {
   );
 }
 
-// ()=>setErrors({...errors, FirstName: undefined})}

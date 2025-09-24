@@ -12,6 +12,7 @@ export function Step2(props) {
     continueBtn,
     setIndex,
     index,
+    prevBtn,
     text,
     isContinue,
     totalPages,
@@ -70,6 +71,18 @@ export function Step2(props) {
       )}
 
       <div className="flex gap-10">
+        <Buttons
+          page={page}
+          submit={submit}
+          setPage={setPage}
+          data={data}
+          setData={setData}
+          errors={errors}
+          setErrors={setErrors}
+          isContinue={false}
+          text={"Prev"}
+          prevBtn={prevBtn}
+        />
         <Buttons
           page={page}
           setPage={setPage}

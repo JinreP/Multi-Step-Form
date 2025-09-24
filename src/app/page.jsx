@@ -74,8 +74,10 @@ export default function Home() {
     } else if (data.password.length < 8) {
       newErrors.password = "weak password";
     }
+    console.log("pass:");
+    console.log(data.password);
 
-    if (!data.password === data.confirmPass) {
+    if (data.password !== data.confirmPass) {
       newErrors.confirmPass = "Pasword is not matching";
     }
 
@@ -86,7 +88,14 @@ export default function Home() {
       setIndex(index + 1);
     }
   };
+  const finish = (e) => {
+    e.preventDefault();
 
+    let finish = {};
+    if (data.date.trim() > 100) {
+      finish.date = "old fucker";
+    }
+  };
   //   let newErrors = {};
   // };
   const totalPages = 4;
@@ -122,6 +131,7 @@ export default function Home() {
           data={data}
           submit={submit}
           setData={setData}
+          finish={finish}
           errors={errors}
           setErrors={setErrors}
         />
@@ -160,7 +170,7 @@ export default function Home() {
         <div className="body">{currentPage(page)}</div>
 
         <div className="flex gap-5">
-          {page > 0 && page !== totalPages - 1 ? (
+          {page < 1 && page !== totalPages - 1 ? (
             <Buttons
               page={page}
               submit={submit}
