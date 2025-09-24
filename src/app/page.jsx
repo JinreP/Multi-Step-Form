@@ -91,9 +91,13 @@ export default function Home() {
   const finish = (e) => {
     e.preventDefault();
 
-    let finish = {};
+    let newErrors = {};
     if (data.date.trim() > 100) {
-      finish.date = "old fucker";
+      newErrors.date = "old fucker";
+    }
+    if (Object.keys(newErrors).length === 0) {
+      setPage(3);
+      setIndex(3);
     }
   };
   //   let newErrors = {};

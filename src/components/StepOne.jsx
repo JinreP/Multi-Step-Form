@@ -14,9 +14,12 @@ export function Step1(props) {
           name="FirstName"
           className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
           value={data.FirstName}
-          onChange={(event) =>
-            setData({ ...data, FirstName: event.target.value })
-          }
+          onChange={(event) => {
+            setData({ ...data, FirstName: event.target.value });
+            if (errors.FirstName) {
+              setErrors({ ...errors, FirstName: null });
+            }
+          }}
           placeholder="Enter Your First Name"
         />{" "}
         {errors.FirstName && <p className="text-red-600">{errors.FirstName}</p>}
@@ -27,9 +30,12 @@ export function Step1(props) {
           name="LastName"
           className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
           value={data.LastName}
-          onChange={(event) =>
-            setData({ ...data, LastName: event.target.value })
-          }
+          onChange={(event) => {
+            setData({ ...data, LastName: event.target.value });
+            if (errors.LastName) {
+              setErrors({ ...errors, LastName: null });
+            }
+          }}
           placeholder="Enter Your Last Name"
         />{" "}
         {errors.LastName && <p className="text-red-600">{errors.LastName}</p>}
@@ -40,9 +46,10 @@ export function Step1(props) {
           name="Username"
           className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
           value={data.Username}
-          onChange={(event) =>
-            setData({ ...data, Username: event.target.value })
-          }
+          onChange={(event) => {
+            setData({ ...data, Username: event.target.value });
+            setErrors({ ...errors, Username: null });
+          }}
           placeholder="Enter Your Username"
         />
         {errors.Username && <p className="text-red-600">{errors.Username}</p>}
@@ -50,4 +57,3 @@ export function Step1(props) {
     </div>
   );
 }
-
