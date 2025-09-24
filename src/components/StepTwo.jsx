@@ -31,7 +31,10 @@ export function Step2(props) {
         className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
         placeholder="Enter Your Email"
         value={data.email}
-        onChange={(e) => setData({ ...data, email: e.target.value })}
+        onChange={(e) => {
+          setData({ ...data, email: e.target.value });
+          setErrors({ ...errors, email: null });
+        }}
       />
       {errors.email && <p className="text-red-600">{errors.email}</p>}
       <label htmlFor="number">Phone number *</label>
@@ -42,7 +45,10 @@ export function Step2(props) {
         className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
         placeholder="Enter Your Phone Number"
         value={data.number}
-        onChange={(e) => setData({ ...data, number: e.target.value })}
+        onChange={(e) => {
+          setData({ ...data, number: e.target.value });
+          setErrors({ ...errors, number: null });
+        }}
       />
       {errors.number && <p className="text-red-600">{errors.number}</p>}
       <label htmlFor="password">Password *</label>
@@ -53,7 +59,10 @@ export function Step2(props) {
         className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
         placeholder="Enter Your Password"
         value={data.password}
-        onChange={(e) => setData({ ...data, password: e.target.value })}
+        onChange={(e) => {
+          setData({ ...data, password: e.target.value });
+          setErrors({ ...errors, password: null });
+        }}
       />
       {errors.password && <p className="text-red-600">{errors.password}</p>}
       <label htmlFor="confirmPass">Password confirm *</label>
@@ -64,7 +73,10 @@ export function Step2(props) {
         className="w-[300px] h-[50px] text-black focus:border-blue-500 border-blue-500 "
         placeholder="Confirm You're Password"
         value={data.confirmPass}
-        onChange={(e) => setData({ ...data, confirmPass: e.target.value })}
+        onChange={(e) => {
+          setData({ ...data, confirmPass: e.target.value });
+          setErrors({ ...errors, confirmPass: null });
+        }}
       />
       {errors.confirmPass && (
         <p className="text-red-600">{errors.confirmPass}</p>

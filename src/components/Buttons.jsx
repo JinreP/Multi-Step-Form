@@ -43,50 +43,6 @@ export function Buttons(props) {
     );
   }
 
-  if (isContinue) {
-    return (
-      <button
-        type="submit"
-        onKeyDown={keyboard}
-        className="w-[150px] rounded-[10px] h-[50px] bg-black text-white font-bold"
-        onClick={(e) => {
-          if (validation) {
-            validation(e);
-          } else {
-            continueBtn();
-          }
-        }}
-      >
-        <div className="flex  gap-1 pl-6 text-center">
-          <p>{text}</p>
-          <p>{index}/3</p>
-        </div>
-      </button>
-    );
-  }
-
-  if (isContinue) {
-    return (
-      <button
-        type="submit"
-        onKeyDown={keyboard}
-        className="w-[150px] rounded-[10px] h-[50px] bg-black text-white font-bold"
-        onClick={(e) => {
-          if (finish) {
-            finish(e);
-          } else {
-            continueBtn();
-          }
-        }}
-      >
-        <div className="flex  gap-1 pl-6 text-center">
-          <p>{text}</p>
-          <p>{index}/3</p>
-        </div>
-      </button>
-    );
-  }
-
   return (
     <div className="flex gap-10 justify-center items-center">
       <button

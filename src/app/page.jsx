@@ -64,9 +64,9 @@ export default function Home() {
     if (data.email.trim().length === 0) {
       newErrors.email = "email is required";
     } else if (data.email.includes("@") && data.email.includes(".com"))
-      if (data.number.trim().length === 0) {
+      if (Number(data.number.length === 0)) {
         newErrors.number = "Phone number is required";
-      } else if (data.number.length > 8) {
+      } else if (data.number.length > 8 && data.number.length < 4) {
         newErrors.number = "enter you're real number";
       }
     if (data.password.trim().length === 0) {
@@ -102,7 +102,6 @@ export default function Home() {
   };
   //   let newErrors = {};
   // };
-  const totalPages = 4;
 
   const currentPage = () => {
     if (page === 0) {
@@ -181,6 +180,7 @@ export default function Home() {
           {page < 2 && (
             <Buttons
               isContinue
+              index={index}
               text={`Continue`}
               submit={page === 0 ? submit : undefined}
               validation={page === 1 ? validation : undefined}
@@ -192,6 +192,7 @@ export default function Home() {
             <Buttons
               isContinue
               text="Submit"
+              index={index}
               finish={finish}
               continueBtn={continueBtn}
             />
