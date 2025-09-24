@@ -69,41 +69,6 @@ export function Step2(props) {
       {errors.confirmPass && (
         <p className="text-red-600">{errors.confirmPass}</p>
       )}
-
-      <div className="flex gap-10">
-        <Buttons
-          page={page}
-          submit={submit}
-          setPage={setPage}
-          data={data}
-          setData={setData}
-          errors={errors}
-          setErrors={setErrors}
-          isContinue={false}
-          text={"Prev"}
-          prevBtn={prevBtn}
-        />
-        <Buttons
-          page={page}
-          setPage={setPage}
-          data={data}
-          setData={setData}
-          validation={validation}
-          errors={errors}
-          setErrors={setErrors}
-          isContinue={true}
-          setIndex={setIndex}
-          text={"Continue"}
-          index={index}
-          continueBtn={continueBtn}
-        />
-      </div>
     </form>
   );
 }
-
-// data.password !== data.confirmPass
-//         ? (passError2 = "Password is not matching!!")
-//         : "" || data.confirmPass === ""
-//         ? (passError2 = "Confirm you're password")
-//         : "Make" &&

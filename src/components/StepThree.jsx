@@ -37,40 +37,6 @@ export function Step3(props) {
         onChange={(e) => setData({ ...data, date: e.target.value })}
       />
       {errors.date && <p className="text-red-600">{errors.date}</p>}
-
-      {page > 1 ? (
-        <div className="flex gap-10">
-          {" "}
-          <Buttons
-            page={page}
-            submit={submit}
-            setPage={setPage}
-            data={data}
-            setData={setData}
-            errors={errors}
-            setErrors={setErrors}
-            isContinue={false}
-            text={"Prev"}
-            prevBtn={prevBtn}
-          />
-          <Buttons
-            page={page}
-            setPage={setPage}
-            data={data}
-            setData={setData}
-            validation={validation}
-            errors={errors}
-            setErrors={setErrors}
-            isContinue={true}
-            setIndex={setIndex}
-            text={"Submit"}
-            index={index}
-            continueBtn={continueBtn}
-          />{" "}
-        </div>
-      ) : (
-        ""
-      )}
     </form>
   );
 }

@@ -63,12 +63,12 @@ export default function Home() {
 
     if (data.email.trim().length === 0) {
       newErrors.email = "email is required";
-    }
-    if (data.number.trim().length === 0) {
-      newErrors.number = "Phone number is required";
-    } else if (data.number.length > 8) {
-      newErrors.number = "enter you're real number";
-    }
+    } else if (data.email.includes("@") && data.email.includes(".com"))
+      if (data.number.trim().length === 0) {
+        newErrors.number = "Phone number is required";
+      } else if (data.number.length > 8) {
+        newErrors.number = "enter you're real number";
+      }
     if (data.password.trim().length === 0) {
       newErrors.password = "password is required";
     } else if (data.password.length < 8) {
@@ -170,42 +170,27 @@ export default function Home() {
         <div className="body">{currentPage(page)}</div>
 
         <div className="flex gap-5">
-          {page < 1 && page !== totalPages - 1 ? (
-            <Buttons
-              page={page}
-              submit={submit}
-              setPage={setPage}
-              data={data}
-              setData={setData}
-              errors={errors}
-              setErrors={setErrors}
-              isContinue={false}
-              text={"Prev"}
-              prevBtn={prevBtn}
-            />
-          ) : (
-            ""
+          {page > 0 && page < 3 && (
+            <Buttons isContinue={false} text="Prev" prevBtn={prevBtn} />
           )}
 
-          {page < 2 - 1 ? (
+          {page < 2 && (
             <Buttons
-              page={page}
-              submit={submit}
-              setPage={setPage}
-              data={data}
-              setData={setData}
-              validation={validation}
-              errors={errors}
-              setErrors={setErrors}
-              isContinue={true}
-              setIndex={setIndex}
-              text={"Continue"}
-              index={index}
-              keyboard={keyboard}
+              isContinue
+              text={`Continue`}
+              submit={page === 0 ? submit : undefined}
+              validation={page === 1 ? validation : undefined}
               continueBtn={continueBtn}
             />
-          ) : (
-            ""
+          )}
+
+          {page === 2 && (
+            <Buttons
+              isContinue
+              text="Submit"
+              finish={finish}
+              continueBtn={continueBtn}
+            />
           )}
         </div>
       </div>
