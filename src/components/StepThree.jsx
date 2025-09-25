@@ -4,20 +4,10 @@ export function Step3(props) {
   const {
     data,
     setData,
-    submit,
-    validation,
+
     errors,
-    setErrors,
-    page,
-    setPage,
-    continueBtn,
-    setIndex,
-    index,
-    prevBtn,
-    text,
+
     finish,
-    isContinue,
-    totalPages,
   } = props;
   return (
     <div>

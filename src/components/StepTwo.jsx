@@ -1,22 +1,6 @@
 import { Buttons } from "./Buttons";
 export function Step2(props) {
-  const {
-    data,
-    setData,
-    submit,
-    validation,
-    errors,
-    setErrors,
-    page,
-    setPage,
-    continueBtn,
-    setIndex,
-    index,
-    prevBtn,
-    text,
-    isContinue,
-    totalPages,
-  } = props;
+  const { data, setData, validation, errors, setErrors } = props;
 
   return (
     <form

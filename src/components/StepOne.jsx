@@ -1,5 +1,5 @@
 export function Step1(props) {
-  const { data, setData, page, setPage, errors, setErrors, submit } = props;
+  const { data, setData, errors, setErrors, submit } = props;
 
   return (
     <div className="">

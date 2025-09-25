@@ -31,9 +31,75 @@ export default function Home() {
     date: "",
   });
 
-  // useEffect(() => {
-  //   localStorage.setItem("FirstName", data.FirstName);
-  // }, [data.FirstName]);
+  useEffect(() => {
+    const localStorageFirstName = localStorage.getItem("FirstName");
+    if (localStorageFirstName) {
+      setData((prev) => ({ ...prev, FirstName: localStorageFirstName }));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("FirstName", data.FirstName);
+  }, [data.FirstName]);
+
+  useEffect(() => {
+    const localStorageLastName = localStorage.getItem("LastName");
+    if (localStorageLastName) {
+      setData((prev) => ({ ...prev, LastName: localStorageLastName }));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("LastName", data.LastName);
+  }, [data.LastName]);
+
+  useEffect(() => {
+    const Username = localStorage.getItem("Username");
+    if (Username) {
+      setData((prev) => ({ ...prev, Username: Username }));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("Username", data.Username);
+  }, [data.Username]);
+
+  useEffect(() => {
+    const localStorageEmail = localStorage.getItem("email");
+    if (localStorageEmail) {
+      setData((prev) => ({ ...prev, email: localStorageEmail }));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("email", data.email);
+  }, [data.email]);
+
+  useEffect(() => {
+    const localStorageNumber = localStorage.getItem("number");
+    if (localStorageNumber) {
+      setData((prev) => ({ ...prev, number: localStorageNumber }));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("number", data.number);
+  }, [data.number]);
+
+  useEffect(() => {
+    const localStoragePassword = localStorage.getItem("password");
+    if (localStoragePassword) {
+      setData((prev) => ({ ...prev, password: localStoragePassword }));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("password", data.password);
+  }, [data.password]);
+
+  useEffect(() => {
+    const confirmPass = localStorage.getItem("confirmPass");
+    if (confirmPass) {
+      setData((prev) => ({ ...prev, FirstName: confirmPass }));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("confirmPass", data.confirmPass);
+  }, [data.confirmPass]);
   const submit = (e) => {
     e.preventDefault();
 
@@ -98,9 +164,9 @@ export default function Home() {
     e.preventDefault();
 
     let newErrors = {};
-    if (data.date.length === 0) {
-      newErrors.date = "Please select a date.";
-    }
+    // if (data.date.length === 0) {
+    //   newErrors.date = "Please select a date.";
+    // }
     if (Object.keys(newErrors).length === 0) {
       console.log(data);
       setPage(page + 1);
