@@ -39,8 +39,15 @@ export function Step3(props) {
           onChange={(e) => setData({ ...data, date: e.target.value })}
         />
         {errors.date && <p className="text-red-600">{errors.date}</p>}
-        <label htmlFor="file">Drop you're image here</label>
-        <input type="file" name="file" id="file" />
+        <label htmlFor="file" className="">
+          Profile image *
+        </label>
+        <input
+          type="file"
+          name="file"
+          id="file"
+          className="w-[350px] border-2 h-[130px] text-black text-center font-bold"
+        />
       </form>
     </div>
   );

@@ -27,7 +27,7 @@ export function Buttons(props) {
       <button
         type="submit"
         onKeyDown={keyboard}
-        className="w-[150px] rounded-[10px] h-[50px] bg-black text-white font-bold"
+        className="w-[200px] pl-7 rounded-[10px] h-[50px] bg-black text-white font-bold"
         onClick={(e) => {
           if (finish) return finish(e);
           if (validation) return validation(e);

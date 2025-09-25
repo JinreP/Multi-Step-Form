@@ -8,7 +8,7 @@ export function Submitted() {
         />
         <div className="flex flex-col items-start justify-start">
           <h3 className="font-bold text-3xl">You're All Set 🔥</h3>
-          <p className="text-2xl text-gray-200">
+          <p className="text-2xl text-gray-500">
             We have received your submission. Thank you!
           </p>
         </div>

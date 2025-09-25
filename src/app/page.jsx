@@ -1,5 +1,5 @@
 "use client";
-import { use, useState } from "react";
+import { use, useState, useEffect } from "react";
 import { Step1 } from "../components/StepOne";
 import { Step2 } from "../components/StepTwo";
 import { Step3 } from "../components/StepThree";
@@ -19,6 +19,7 @@ export default function Home() {
     confirmPass: null,
     date: null,
   });
+
   const [data, setData] = useState({
     FirstName: "",
     LastName: "",
@@ -29,23 +30,27 @@ export default function Home() {
     confirmPass: "",
     date: "",
   });
+
+  // useEffect(() => {
+  //   localStorage.setItem("FirstName", data.FirstName);
+  // }, [data.FirstName]);
   const submit = (e) => {
     e.preventDefault();
 
     let newErrors = {};
 
-    if (data.FirstName.trim().length === 0) {
+    if (data.FirstName.length === 0) {
       newErrors.FirstName = "First name is required";
-    } else if (data.FirstName.trim().length < 3) {
+    } else if (data.FirstName.length < 3) {
       newErrors.FirstName = "First name is too short";
     }
-    if (data.LastName.trim().length === 0) {
+    if (data.LastName.length === 0) {
       newErrors.LastName = "Last name is required";
-    } else if (data.LastName.trim().length < 3) {
+    } else if (data.LastName.length < 3) {
       newErrors.LastName = "Last name is too short";
     }
 
-    if (data.Username.trim().length === 0) {
+    if (data.Username.length === 0) {
       newErrors.Username = "Username is required";
     }
 
@@ -60,25 +65,26 @@ export default function Home() {
     e.preventDefault();
 
     let newErrors = {};
-
     if (data.email.trim().length === 0) {
-      newErrors.email = "email is required";
-    } else if (data.email.includes("@") && data.email.includes(".com"))
-      if (Number(data.number.length === 0)) {
-        newErrors.number = "Phone number is required";
-      } else if (data.number.length > 8 && data.number.length < 4) {
-        newErrors.number = "enter you're real number";
-      }
-    if (data.password.trim().length === 0) {
-      newErrors.password = "password is required";
+      newErrors.email = "Email is required";
+    } else if (!data.email.includes("@") || !data.email.includes(".com")) {
+      newErrors.email = "Please provide a valid email address.";
+    }
+    if (Number(data.number.length === 0)) {
+      newErrors.number = "Phone number is required";
+    } else if (data.number.length > 8) {
+      newErrors.number = "Please enter a valid phone number.";
+    }
+    if (data.password.length === 0) {
+      newErrors.password = "Password is required";
     } else if (data.password.length < 8) {
-      newErrors.password = "weak password";
+      newErrors.password = "Weak password";
     }
     console.log("pass:");
     console.log(data.password);
 
     if (data.password !== data.confirmPass) {
-      newErrors.confirmPass = "Pasword is not matching";
+      newErrors.confirmPass = "Passwords do not match. Please try again.";
     }
 
     setErrors(newErrors);
@@ -92,12 +98,13 @@ export default function Home() {
     e.preventDefault();
 
     let newErrors = {};
-    if (data.date.trim() > 100) {
-      newErrors.date = "old fucker";
+    if (data.date.length === 0) {
+      newErrors.date = "Please select a date.";
     }
     if (Object.keys(newErrors).length === 0) {
-      setPage(3);
-      setIndex(3);
+      console.log(data);
+      setPage(page + 1);
+      setIndex(index + 1);
     }
   };
   //   let newErrors = {};
@@ -158,7 +165,7 @@ export default function Home() {
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center ">
-      <div className="flex text-center flex-col gap-3 w-[400px] h-[600px] bg-white">
+      <div className="flex text-center flex-col gap-3 w-[400px] h-[600px] ">
         {page < 3 && (
           <div>
             <img src="/logo.png" alt="test" className="w-[100px] h-[100px]" />
