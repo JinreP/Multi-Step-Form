@@ -37,6 +37,7 @@ export default function Home() {
       setData((prev) => ({ ...prev, FirstName: localStorageFirstName }));
     }
   }, []);
+
   useEffect(() => {
     localStorage.setItem("FirstName", data.FirstName);
   }, [data.FirstName]);
@@ -92,9 +93,9 @@ export default function Home() {
   }, [data.password]);
 
   useEffect(() => {
-    const confirmPass = localStorage.getItem("confirmPass");
-    if (confirmPass) {
-      setData((prev) => ({ ...prev, FirstName: confirmPass }));
+    const localStoragePassConfirm = localStorage.getItem("confirmPass");
+    if (localStoragePassConfirm) {
+      setData((prev) => ({ ...prev, confirmPass: localStoragePassConfirm }));
     }
   }, []);
   useEffect(() => {
@@ -164,9 +165,9 @@ export default function Home() {
     e.preventDefault();
 
     let newErrors = {};
-    // if (data.date.length === 0) {
-    //   newErrors.date = "Please select a date.";
-    // }
+    if (!data.date) {
+      newErrors.date = "Please select a date.";
+    }
     if (Object.keys(newErrors).length === 0) {
       console.log(data);
       setPage(page + 1);
