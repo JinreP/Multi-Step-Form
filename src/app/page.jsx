@@ -101,6 +101,16 @@ export default function Home() {
   useEffect(() => {
     localStorage.setItem("confirmPass", data.confirmPass);
   }, [data.confirmPass]);
+
+  useEffect(() => {
+    const localStorageDate = localStorage.getItem("date");
+    if (localStorageDate) {
+      setData((prev) => ({ ...prev, date: localStorageDate }));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("date", data.date);
+  }, [data.date]);
   const submit = (e) => {
     e.preventDefault();
 
@@ -164,10 +174,22 @@ export default function Home() {
   const finish = (e) => {
     e.preventDefault();
 
-    let newErrors = {};
-    if (!data.date) {
+    const newErrors = {};
+
+    if (!data.date || data.date.trim() === "") {
       newErrors.date = "Please select a date.";
     }
+    const birthDate = new Date(data.date);
+    const birthYear = birthDate.getFullYear();
+    const currentYear = new Date().getFullYear();
+    const age = currentYear - birthYear;
+
+    if (age > 100) {
+      newErrors.date = "Age must be less than or equal to 100 years";
+    } else if (age < 6) {
+      newErrors.date = "Too young to visit this site";
+    }
+    setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
       console.log(data);
       setPage(page + 1);
