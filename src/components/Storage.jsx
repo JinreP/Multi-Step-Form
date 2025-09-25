@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-export function Storage(props) {
+export function MyStorage(props) {
   const { data, setData } = props;
   useEffect(() => {
     const localStorageFirstName = localStorage.getItem("FirstName");
@@ -84,5 +84,5 @@ export function Storage(props) {
   useEffect(() => {
     localStorage.setItem("date", data.date);
   }, [data.date]);
-  return;
+  return null;
 }

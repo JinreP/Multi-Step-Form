@@ -37,6 +37,7 @@ export function Step3(props) {
         </label>
         <input
           type="file"
+          accept="image/png, image/jpeg"
           name="file"
           id="file"
           className="w-[350px] border-2 h-[130px] text-black text-center font-bold"
