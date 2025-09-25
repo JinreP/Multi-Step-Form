@@ -1,5 +1,5 @@
 "use client";
-import { use, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Step1 } from "../components/StepOne";
 import { Step2 } from "../components/StepTwo";
 import { Step3 } from "../components/StepThree";
@@ -18,6 +18,7 @@ export default function Home() {
     password: null,
     confirmPass: null,
     date: null,
+    file: null,
   });
 
   const [data, setData] = useState({
@@ -29,6 +30,7 @@ export default function Home() {
     password: "",
     confirmPass: "",
     date: "",
+    file: "",
   });
 
   useEffect(() => {
@@ -278,6 +280,7 @@ export default function Home() {
               isContinue
               index={index}
               text={`Continue`}
+              keyboard={keyboard}
               submit={page === 0 ? submit : undefined}
               validation={page === 1 ? validation : undefined}
               continueBtn={continueBtn}
