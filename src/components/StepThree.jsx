@@ -1,14 +1,7 @@
 import { Buttons } from "./Buttons";
 
 export function Step3(props) {
-  const {
-    data,
-    setData,
-
-    errors,
-    setErrors,
-    finish,
-  } = props;
+  const { data, setData, onImageChange, errors, setErrors, finish } = props;
   return (
     <div>
       {" "}
@@ -37,11 +30,15 @@ export function Step3(props) {
         </label>
         <input
           type="file"
-          accept="image/png, image/jpeg"
           name="file"
           id="file"
-          className="w-[350px] border-2 h-[130px] text-black text-center font-bold"
+          value={data.file}
+          onChange={() => {
+            setErrors({ ...errors, file: null });
+          }}
+          className="filetype w-[350px] border-2 h-[130px] text-black text-center font-bold"
         />
+        {errors.file && <p className="text-red-600">{errors.file}</p>}
       </form>
     </div>
   );

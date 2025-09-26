@@ -10,6 +10,13 @@ import { MyStorage } from "@/components/Storage";
 export default function Home() {
   const [page, setPage] = useState(0);
   const [index, setIndex] = useState(1);
+  const [image, setImage] = useState(null);
+
+  const onImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      setImage(URL.createObjectURL(event.target.files[0]));
+    }
+  };
   const [errors, setErrors] = useState({
     FirstName: null,
     LastName: null,
@@ -82,8 +89,6 @@ export default function Home() {
     } else if (data.password.length < 8) {
       newErrors.password = "Weak password";
     }
-    console.log("pass:");
-    console.log(data.password);
 
     if (data.password !== data.confirmPass) {
       newErrors.confirmPass = "Passwords do not match. Please try again.";
@@ -113,6 +118,10 @@ export default function Home() {
       newErrors.date = "Age must be less than or equal to 100 years";
     } else if (age < 6) {
       newErrors.date = "Too young to visit this site";
+    }
+
+    if (data.file === "" || data.file === 0) {
+      newErrors.file = "Image cannot be blank";
     }
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
@@ -158,6 +167,7 @@ export default function Home() {
           finish={finish}
           errors={errors}
           setErrors={setErrors}
+          onImageChange={onImageChange}
         />
       );
     }
