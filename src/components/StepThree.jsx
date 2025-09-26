@@ -1,7 +1,7 @@
 import { Buttons } from "./Buttons";
 
 export function Step3(props) {
-  const { data, setData, onImageChange, errors, setErrors, finish } = props;
+  const { data, setData, errors, setErrors, finish } = props;
   return (
     <div>
       {" "}
@@ -28,16 +28,30 @@ export function Step3(props) {
         <label htmlFor="file" className="">
           Profile image *
         </label>
-        <input
-          type="file"
-          name="file"
-          id="file"
-          value={data.file}
-          onChange={() => {
-            setErrors({ ...errors, file: null });
-          }}
-          className="filetype w-[350px] border-2 h-[130px] text-black text-center font-bold"
-        />
+        <div className="w-[350px] border-2 h-fit text-black text-center font-bold">
+          <input
+            type="file"
+            name="file"
+            id="file"
+            accept="image/*"
+            onChange={(e) => {
+              const image = e.target.files[0];
+              if (image) {
+                setData({ ...data, file: image });
+              }
+              setErrors({ ...errors, file: null });
+            }}
+            className="filetype"
+          />
+          {data.file && (
+            <img
+              src={URL.createObjectURL(data.file)}
+              alt="Preview"
+              className="w-[350px] h-[300px] object-cover border rounded"
+            />
+          )}
+        </div>
+
         {errors.file && <p className="text-red-600">{errors.file}</p>}
       </form>
     </div>

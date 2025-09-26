@@ -10,13 +10,7 @@ import { MyStorage } from "@/components/Storage";
 export default function Home() {
   const [page, setPage] = useState(0);
   const [index, setIndex] = useState(1);
-  const [image, setImage] = useState(null);
 
-  const onImageChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      setImage(URL.createObjectURL(event.target.files[0]));
-    }
-  };
   const [errors, setErrors] = useState({
     FirstName: null,
     LastName: null,
@@ -38,10 +32,8 @@ export default function Home() {
     password: "",
     confirmPass: "",
     date: "",
-    file: "",
+    file: null,
   });
-
-  <MyStorage data={data} setData={setData} />;
 
   const submit = (e) => {
     e.preventDefault();
@@ -120,7 +112,7 @@ export default function Home() {
       newErrors.date = "Too young to visit this site";
     }
 
-    if (data.file === "" || data.file === 0) {
+    if (!data.file) {
       newErrors.file = "Image cannot be blank";
     }
     setErrors(newErrors);
@@ -167,7 +159,6 @@ export default function Home() {
           finish={finish}
           errors={errors}
           setErrors={setErrors}
-          onImageChange={onImageChange}
         />
       );
     }

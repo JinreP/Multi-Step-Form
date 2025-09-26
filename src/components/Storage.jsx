@@ -85,14 +85,14 @@ export function MyStorage(props) {
     localStorage.setItem("date", data.date);
   }, [data.date]);
 
-  // useEffect(() => {
-  //   const localStorageFile = localStorage.getItem("file");
-  //   if (localStorageFile) {
-  //     setData((prev) => ({ ...prev, file: localStorageFile }));
-  //   }
-  // }, []);
-  // useEffect(() => {
-  //   localStorage.setItem("file", data.file);
-  // }, [data.file]);
+  useEffect(() => {
+    const localStorageFile = localStorage.getItem("file");
+    if (localStorageFile) {
+      setData((prev) => ({ ...prev, file: localStorageFile }));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("file", data.file);
+  }, [data.file]);
   return null;
 }
