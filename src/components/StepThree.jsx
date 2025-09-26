@@ -1,7 +1,13 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 import { Buttons } from "./Buttons";
 
 export function Step3(props) {
   const { data, setData, errors, setErrors, finish } = props;
+  const [preview, setPreview] = useState("");
+
   return (
     <div>
       {" "}
@@ -28,31 +34,31 @@ export function Step3(props) {
         <label htmlFor="file" className="">
           Profile image *
         </label>
-        <div className="w-[350px] border-2 h-fit text-black text-center font-bold">
+        <div className="w-[350px] flex flex-col items-center justify-center border-2 h-fit text-black text-center font-bold">
           <input
             type="file"
             name="file"
             id="file"
             accept="image/*"
             onChange={(e) => {
-              const image = e.target.files[0];
-              if (image) {
-                setData({ ...data, file: image });
+              const file = e.target.files[0];
+              if (file) {
+                setData({ ...data, file });
+                setPreview(URL.createObjectURL(file));
+                setErrors({ ...errors, file: null });
               }
-              setErrors({ ...errors, file: null });
             }}
-            className="filetype"
           />
-          {data.file && (
+
+          {data.file && typeof data.file !== "string" && (
             <img
               src={URL.createObjectURL(data.file)}
               alt="Preview"
-              className="w-[350px] h-[300px] object-cover border rounded"
+              className="w-[330px] mt-3 h-[300px] mb-5 object-cover border rounded"
             />
           )}
+          {errors.file && <p className="text-red-600">{errors.file}</p>}
         </div>
-
-        {errors.file && <p className="text-red-600">{errors.file}</p>}
       </form>
     </div>
   );

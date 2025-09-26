@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { Step1 } from "../components/StepOne";
 import { Step2 } from "../components/StepTwo";
 import { Step3 } from "../components/StepThree";
@@ -193,7 +194,18 @@ export default function Home() {
             </div>{" "}
           </div>
         )}
-        <div className="body">{currentPage(page)}</div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={page}
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -100, opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full"
+          >
+            {currentPage(page)}
+          </motion.div>
+        </AnimatePresence>
 
         <div className="flex gap-5">
           {page > 0 && page < 3 && (
