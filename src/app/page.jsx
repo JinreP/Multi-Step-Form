@@ -69,10 +69,10 @@ export default function Home() {
     let newErrors = {};
     if (data.email.trim().length === 0) {
       newErrors.email = "Email is required";
-    } else if (!data.email.includes("@") || !data.email.includes(".com")) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email.length || "")) {
       newErrors.email = "Please provide a valid email address.";
     }
-    if (Number(data.number.length === 0)) {
+    if (data.number.value.length === "") {
       newErrors.number = "Phone number is required";
     } else if (data.number.length > 8) {
       newErrors.number = "Please enter a valid phone number.";
